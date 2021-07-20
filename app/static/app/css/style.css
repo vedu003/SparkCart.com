@@ -73,9 +73,6 @@ html {
 
 /* *******login******** */
 
-.loginsec, .signupsec, .contactsec {
-	height: 100vh;
-}
 
 .logoutsec, .mailsentsec, .mailcofirmsec, .passresetdonesec{
 	height: 34vh;
