@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9xu*u9eez!*44yg(4-ad_5+rqbh2hxm9y%jw$m(_hffldbwa1*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = [localhost, sparkcart.herokuapp.com]
+ALLOWED_HOSTS = ['127.0.0.1', 'sparkcart.herokuapp.com']
 
 
 # Application definition
