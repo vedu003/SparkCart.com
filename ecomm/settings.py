@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-9xu*u9eez!*44yg(4-ad_5+rqbh2hxm9y%jw$m(_hffldbwa1*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [localhost, sparkcart.herokuapp.com]
 
 
 # Application definition
