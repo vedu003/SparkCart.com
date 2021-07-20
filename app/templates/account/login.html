@@ -1,0 +1,50 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+{% block title %}Login{% endblock title %}
+{% block main-content %}
+<section class="loginsec">
+<div class="container">
+ <div class="row my-3">
+  <div class="col-md-4 offset-md-4 formwidth">
+   
+   
+   <form id="login_form" class="login shadow p-5 mt-5" method="post" action="{% url 'account_login' %}">
+    {% csrf_token %}
+    <h3 class="text-center mb-3">Login</h3>
+    <div class="text-center mb-2">
+        <a href="{% provider_login_url "facebook" method="oauth2" %}"><img src="https://img.icons8.com/color/48/000000/facebook-circled--v1.png"/></a>
+        <a href="{% provider_login_url "google" %}"><img src="https://img.icons8.com/fluent/40/000000/google-logo.png"/></a>
+    </div>
+    <p class="text-center mb-3 text-muted">or use your account</p>
+    <div class="mb-3">
+        <label for="inputEmail4" class="form-label">Email</label>
+        <input id="email" name="login" placeholder="Email" type="email" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="inputPassword1" class="form-label">Password</label>
+        <input id="password1" type="password" name="password" placeholder="Password" class="form-control" required>
+    </div>
+    
+    <div class="mb-3">
+        <small class="text-danger">{{form.errors|striptags}}</small>
+     </div>
+    
+
+    <small class="forgetpass"><a href="{% url 'account_reset_password' %}">Forgot Password ?</a></small> <br>    
+
+    {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+     <div class="text-center mt-2">
+        <input type="submit" class="loginbtn mt-3" value="Login">
+    </div>
+    <div class="text-center text-primary fw-bold mt-3"><small>New to SparkCart.com ? <br> <a href="{% url 'account_signup' %}"
+       class="text-danger">Create an Account</a> </small></div>
+   </form>
+  </div>
+ </div>
+</div>
+</section>
+{% endblock main-content %}

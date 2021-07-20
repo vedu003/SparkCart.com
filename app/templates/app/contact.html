@@ -1,0 +1,40 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Contact{% endblock title %}
+{% block main-content %}
+<section class="contactsec">
+<div class="container my-5">
+ <div class="row">
+  
+  <div class="col-sm-6 offset-sm-3 mt-4">
+    <h4 class="mb-4   ">Welcome {{request.user.username|capfirst}}</h4>
+   <form action="/contact/" method="POST">
+    {% csrf_token %}
+    <div class="col-12">
+      <label for="inputName" class="form-label mt-2">Name</label>
+      <input type="text" class="form-control" name="name" placeholder="Name" required>
+    </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label mt-2">Email</label>
+      <input type="email" class="form-control" placeholder="Email" name="email" required>
+    </div>
+    
+    <div class="col-12">
+      <label for="inputCity" class="form-label mt-2">Contact No.</label>
+      <input type="tel" class="form-control"  name="contact" placeholder="Contact No." pattern="^\d{10}$" required>
+    </div>
+    
+    <div class="col-12">
+        <label for="inputCity" class="form-label mt-2">Feedback/Query :</label>
+        <textarea class="form-control" rows="5" placeholder="Enter Your Message" name="feedback" required autocomplete="off" id="usermsg" required></textarea>
+      </div>
+
+    <div class="col-12 mt-3 text-center">
+      <button type="submit" class="contactbtn">Submit</button>
+    </div>
+   </form>
+  </div>
+ </div>
+</div>
+</section>
+{% endblock main-content %}

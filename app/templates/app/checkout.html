@@ -1,0 +1,49 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Checkout{% endblock title %}
+{% block main-content %}
+<div class="container checkoutsec">
+ <div class="row mt-5">
+  <div class="col-sm-6">
+    <h4>Order Summary</h4>
+    <hr>
+    {% for p in cart_items %}
+      <div class="card mb-2">
+        <div class="card-body">
+          <h5>{{p.product.title}}</h5>
+          <p>Quantity: {{p.quantity}}</p>
+          <p class="fw-bold">Price: {{p.total_cost}}</p>
+        </div>
+      </div>
+      {% endfor %}
+      <p class="fw-bold"> + Shipping Price: {{shipping_Amount}}</p>
+      <h4 class="fw-bold">Total Price: {{totalamount}}</h4>
+    <small class="tac">Term and Condition: Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, ullam saepe! Iure optio repellat dolor velit, minus rem. Facilis cumque neque numquam laboriosam.</small>
+  </div>
+  
+  <div class="col-sm-4 offset-sm-1">
+    <h4 class="selectaddresstext">Select Shipping Address</h4>
+    <hr>
+    <a href="{% url 'manageaddress' %}" class="gotocart">Add New Address</a>
+    {% for ad in add %}
+    <form action="/paymentdone" class="mt-3">
+      <div class="card">
+        <div class="card-body">
+        <h5>{{ad.name}}</h5>
+        <p>{{ad.locality}}, {{ad.city}}, {{ad.state}} - {{ad.zipcode}}</p>
+        </div>
+      </div>
+        <div class="form-check mt-2 mb-5">
+          <input class="form-check-input" type="radio" value="{{ad.id}}" name="custid" id="custadd{{forloop.counter}}" required>
+          <label class="form-check-label fw-bold" for="custadd{{forloop.counter}}">
+            Address: {{forloop.counter}} </label>
+        </div>
+        {% endfor %}
+        <div class="text-end">
+          <button type="submit" class="addadressbtn">Continue</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock main-content %}

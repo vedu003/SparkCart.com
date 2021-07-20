@@ -1,0 +1,53 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% block main-content %}
+<div class="container my-5 profilesec">
+ <div class="row">
+  <h3 class="mb-3 welcometext">Welcome {{request.user.username|capfirst}}</h3>
+  <div class="col-sm-2 border-end">
+   <ul class="list-unstyled">
+    <li class="d-grid"><a href="{% url 'profile' %}" class="btn {{active}}">Profile</a></li>
+    <li class="d-grid"><a href="{% url 'address' %}" class="btn">Address</a></li>
+   </ul>
+  </div>
+  <div class="col-sm-6 offset-sm-2">
+    <form action="{% url 'manageprofile' pr.id %}" method="POST" class="shadow p-5">
+     {% csrf_token %}
+     <h2 class="mb-3">Update Profile</h2>
+     <div class="col-12">
+       <label for="inputName" class="form-label">Name</label>
+       <input type="text" class="form-control" id="inputEmail" name="name" value="{{pr.name}}" required>
+     </div>
+     <div class="col-12">
+      <label for="inputName" class="form-label">Date of Birth</label>
+      <input type="date" class="form-control" id="inputEmail" name="dob" value="{{pr.dob}}"  required>
+    </div>
+     <div class="col-12">
+       <label for="inputAddress" class="form-label">Contact</label>
+       <input type="tel" class="form-control" id="inputAddress" placeholder="1234 Main St" name="contact" value="{{pr.contact}}" required>
+     </div>
+     <div class="col-12 mt-3">
+       {% if pr.gender == 'Male' %}
+       <input type="radio" id="male" name="gender" value="Male" checked>
+       <label for="male">Male</label><br>
+       <input type="radio" id="female" name="gender" value="Female">
+       <label for="female">Female</label><br>
+       {% else %}
+       <input type="radio" id="male" name="gender" value="Male">
+       <label for="male">Male</label><br>
+       <input type="radio" id="female" name="gender" value="Female" checked>
+       <label for="female">Female</label><br>
+       {% endif %}
+     </div>
+     
+     <div class="col-12 mt-3">
+       <button type="submit" class="updateadressbtn mt-3">Submit</button>
+      <a href="{% url 'profile' %}" class="btn btn-sm backbtn">Back</a>
+     </div>
+    </form>
+   </div>
+  
+ </div>
+</div>
+{% endblock main-content %}

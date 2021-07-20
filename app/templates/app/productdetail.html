@@ -1,0 +1,95 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Product Details{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-6 text-center align-self-center mb-3">
+    {% if product.category == 'Mobile' %}
+        <img src="{{ product.product_image.url }}" alt="" class="img-fluid pdmobileimg">
+    {% elif product.category == 'L' %}
+        <img src="{{ product.product_image.url }}" alt="" class="img-fluid pdlaptopimg">
+    {% elif product.category == 'C' %}
+        <img src="{{ product.product_image.url }}" alt="" class="img-fluid pdcameraimg">
+    {% elif product.category == 'MTS' %}
+        <img src="{{ product.product_image.url }}" alt="" class="img-fluid pdmtsimg">
+    {% elif product.category == 'MS' %}
+        <img src="{{ product.product_image.url }}" alt="" class="img-fluid pdmsimg">
+    {% elif product.category == 'MJ' %}
+        <img src="{{ product.product_image.url }}" alt="" class="img-fluid pdmsimg">
+    {% elif product.category == 'MSU' %}
+        <img src="{{ product.product_image.url }}" alt="" class="img-fluid pdmsuimg">
+    {% elif product.category == 'MSH' %}
+        <img src="{{ product.product_image.url }}" alt="" class="img-fluid pdmsiimg">
+    {% elif product.category == 'MW' %}
+        <img src="{{ product.product_image.url }}" alt="" class="img-fluid pdmsimg">
+    {% elif product.category == 'WTS' %}
+        <img src="{{ product.product_image.url }}" alt="" class="img-fluid pdmsimg">
+    {% elif product.category == 'WJ' %}
+        <img src="{{ product.product_image.url }}" alt="" class="img-fluid pdmobileimg">
+    {% elif product.category == 'WK' %}
+        <img src="{{ product.product_image.url }}" alt="" class="img-fluid pdmobileimg">
+    {% elif product.category == 'WSA' %}
+        <img src="{{ product.product_image.url }}" alt="" class="img-fluid pdmtsimg">
+    {% elif product.category == 'WW' %}
+        <img src="{{ product.product_image.url }}" alt="" class="img-fluid pdwwimg">
+    {% elif product.category == 'WT' %}
+        <img src="{{ product.product_image.url }}" alt="" class="img-fluid pdmsimg">
+    {% elif product.category == 'WSH' %}
+        <img src="{{ product.product_image.url }}" alt="" class="img-fluid pdcameraimg">        
+    {% endif %}
+  </div>
+  <div class="col-sm-5 offset-sm-1">
+   <h2>{{product.title}}</h2>
+   <hr>
+   <p>{{product.description}}</p> <br>
+   <h5>M.R.P.: <small class="fw-light text-decoration-line-through"> ₹ {{product.selling_price}}</small></h5>
+   <h4>Price: ₹ {{product.discounted_price}} </h4>
+
+    {% if request.user.is_authenticated %}
+    {% if item_already_in_cart %}
+    <div class="mt-4">
+        <a href="{% url 'showcart' %}" class="gotocart">Go to Cart</a>
+    </div>
+    {% else %}
+    <form action="/add-to-cart/" class="d-inline">
+        <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
+        <button type="submit" class="addadressbtn mt-4">Add to Cart</button>
+    </form>
+    {% endif %}
+    {% endif %}
+
+    {% if not request.user.is_authenticated %}
+    <form action="/add-to-cart/" class="d-inline">
+
+        <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
+        <button type="submit" class="addadressbtn mt-4">Add to Cart</button>
+    </form>
+    {% endif %}
+
+   <div class="delievryicon">
+    <div class="img border-end">
+        <img src="https://img.icons8.com/fluent/48/000000/cash-on-delivery.png"/>
+        <span class="text-center mt-2">Cash on <br> Delivery</span>
+    </div>
+    <div class="img border-end">
+        <img src="https://img.icons8.com/fluent/50/000000/shipped.png"/>
+        <span class="text-center mt-2">SparkCart <br> Delivered</span>
+    </div>
+    <div class="img">
+        <img src="https://img.icons8.com/office/45/000000/timezone-plus-7.png"/>
+        <span class="text-center mt-2">7 Days <br> Replacement</span>
+    </div>
+   </div>
+
+   <h5 class="mt-5">Available Offers</h5>
+   <ul>
+    <li>Bank Offer 5% Unlimited Cashback on Flipkart Axis Bank Credit</li>
+    <li>Special Price Get extra ₹3000 off (price inclusive of discount)</li>
+    <li>No cost EMI ₹1,667/month. Standard EMI also available</li>
+    <li>Partner Offer ₹2000 Flipkart Gift Card on Every 1000th Transaction with a new Visa Debit/Credit Card</li>
+   </ul>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}

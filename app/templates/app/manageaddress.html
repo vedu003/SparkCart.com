@@ -1,0 +1,53 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Manage Address{% endblock title %}
+{% block main-content %}
+<div class="container my-5 profilesec">
+ <div class="row">
+  <h3 class="mb-3 welcometext">Welcome {{request.user.username|capfirst}}</h3>
+  <div class="col-sm-2 border-end">
+   <ul class="list-unstyled">
+    <li class="d-grid"><a href="{% url 'profile' %}" class="btn">Profile</a></li>
+    <li class="d-grid"><a href="{% url 'address' %}" class="btn {{active}}">Address</a></li>
+   </ul>
+  </div>
+  <div class="col-sm-6 offset-sm-2 updateaddform">
+   <form action="/manageaddress/" method="POST" class="shadow p-5">
+    {% csrf_token %}
+    <h2 class="mb-3">New Address</h2>
+
+    <div class="col-12">
+      <label for="inputName" class="form-label">Name</label>
+      <input type="text" class="form-control" id="inputEmail" placeholder="Name" name="name" required>
+    </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">Contact</label>
+      <input type="tel" class="form-control" id="inputAddress" placeholder="Contact No." pattern="^\d{10}$" name="contact" required>
+    </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">Locality</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="Locality" name="locality" required>
+    </div>
+    
+    <div class="col-12">
+      <label for="inputCity" class="form-label">City</label>
+      <input type="text" class="form-control" id="inputCity" placeholder="City" name="city" required>
+    </div>
+    <div class="col-12">
+      <label for="inputState" class="form-label">State</label>
+      <input type="text" class="form-control" id="inputState" placeholder="State" name="state" required>
+    </div>
+    <div class="col-12">
+      <label for="inputZip" class="form-label">Zip</label>
+      <input type="text" class="form-control" id="inputZip" placeholder="Zipcode" name="zip" required>
+    </div>
+    <div class="col-12 mt-3">
+      <button type="submit" class="addadressbtn mt-3">Submit</button>
+    </div>
+   </form>
+  </div>
+ </div>
+</div>
+
+{% endblock main-content %}
+

@@ -1,0 +1,60 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Address{% endblock title %}
+{% block main-content %}
+<div class="container my-5 profilesec">
+ <div class="row">
+ <h3 class="mb-3 welcometext">Welcome {{request.user.username|capfirst}}</h3>
+  <div class="col-sm-2 border-end">
+   <ul class="list-unstyled">
+    <li class="d-grid"><a href="{% url 'profile' %}" class="btn">Profile</a></li>
+    <li class="d-grid"><a href="{% url 'address' %}" class="btn {{active}}">Address</a></li>
+   </ul>
+  </div>
+  <div class="col-sm-9 offset-sm-1">
+    
+    {% if add %}
+    <a href="{% url 'manageaddress' %}" class="btn btn-sm addadressbtn">Add New Address</a>
+   <div class="row mt-4">
+    {% for ad in add %}
+    <div class="col-sm-6">
+     <div class="card">
+      <div class="card-body">
+       <h3>Address {{forloop.counter}}</h3>
+       <p>Name: {{ad.name}}</p>
+       <p>Contact No: {{ad.contact}}</p>
+       <p>Locality: {{ad.locality}}</p>
+       <p>City: {{ad.city}}</p>
+       <p>State: {{ad.state}}</p>
+       <p>Pin Code: {{ad.zipcode}}</p>
+       <div class="col-12 mt-3">
+        <a href="{% url 'updateaddress' ad.id %}" class="btn btn-warning btn-sm editbtn">Edit</a>
+        <form action="{% url 'deleteaddress' ad.id %}" method="POST" class="d-inline">
+            {% csrf_token %}
+                <input type="submit" class="btn btn-danger btn-sm deletebtn" value="Delete">
+        </form>
+      </div>
+      </div>
+     </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="container">
+          <div class="text-center emptyadddiv">
+              <a href="{% url 'manageaddress' %}" class="btn btn-sm addadressbtn">Add New Address</a>
+              <img src="{% static 'app/images/address_not_found2.jpg' %}" alt="" class="img-fluid emptyadd">
+          </div>
+    </div>
+  {% endif %}
+   </div>
+  </div>
+ </div>
+</div>
+<script>
+    setTimeout(function(){
+      if ($('#msgmsg').length > 0) {
+        $('#msgmsg').remove();
+      }
+    },2000)
+  </script>
+{% endblock main-content %}

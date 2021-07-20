@@ -1,0 +1,24 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Logout{% endblock title %}
+{% block main-content %}
+
+<section class="logoutsec mt-5">
+<div class="container">
+ <div class="row my-3">
+  <div class="col-sm-6 offset-sm-3">
+   <h3 style="margin-bottom: 25px">Are you sure you want to logout? </h3>
+
+   <form method="post" action="{% url 'account_logout' %}">
+     {% csrf_token %}
+     {% if redirect_field_value %}
+     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+     {% endif %}
+     <input type="submit" class="logoutbtn" style="margin-bottom: 100px" value="Logout">
+   </form>
+   
+  </div>
+ </div>
+</div>
+</section>
+{% endblock main-content %}
