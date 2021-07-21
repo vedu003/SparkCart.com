@@ -468,7 +468,6 @@ def contact(request):
         email= request.POST.get('email','')
         contact= request.POST.get('contact','')
         feedback= request.POST.get('feedback','')
-        print(name,email,contact,feedback)
         Contact(name=name, email=email, contact=contact, feedback=feedback).save()
         subject = 'Hello ' + name + ' from SparkCart.com!'
         message = 'Your Responce: '+feedback+'\nStay Connected. We would love to hear you!'

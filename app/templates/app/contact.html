@@ -6,7 +6,7 @@
 <div class="container my-5">  
   <div class="formwidth2 mt-4">
     <h4 class="mb-4   ">Welcome {{request.user.username|capfirst}}</h4>
-   <form action="/contact/" method="POST" class="contactform">
+   <form action="/contact/" method="POST" class="contactform" onsubmit="noBack();">
     {% csrf_token %}
     <div class="col-12">
       <label for="inputName" class="form-label mt-2">Name</label>
@@ -34,4 +34,13 @@
   </div>
 </div>
 </section>
+
+<script type="text/javascript">
+  window.history.forward();
+  function noBack()
+  {
+      window.history.forward();
+  }
+</script>
+
 {% endblock main-content %}

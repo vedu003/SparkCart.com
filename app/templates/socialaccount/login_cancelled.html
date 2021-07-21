@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Verify Email{% endblock title %}
+{% load i18n %}
+{% block main-content %}
+<section class="mailsentsec mt-5">
+<div class="container">
+ <div class="row my-3">
+  <div class="col-sm-6 offset-sm-3">
+   <h3>Login Cancelled</h3>
+   {% url 'account_login' as login_url %}
+   <p>{% blocktrans %}You decided to cancel logging in to our site using one of your existing accounts. If this was a mistake, please proceed to <a href="{{login_url}}">sign in</a>.{% endblocktrans %}</p>
+  </div>
+ </div>
+</div>
+</section>
+{% endblock main-content %}

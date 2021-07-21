@@ -5,7 +5,7 @@
 {% block main-content %}
 <section class="signupsec">
 <div class="container">
-    <p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to
+    <p class="mt-5 text-center">{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to
         {{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>
         
   <div class="formwidth">
