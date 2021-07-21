@@ -487,6 +487,8 @@ def searchMatch(query,item):
 
 def search(request):
     
+    if request.user.is_authenticated:
+        totalitems = len(Cart.objects.filter(user=request.user))
     query = request.GET.get('search')
     prods = Product.objects.all()
     prod = [item for item in prods if searchMatch(query,item)]
@@ -494,4 +496,4 @@ def search(request):
     if prodlen== 0:
         return render(request, 'app/search.html')
     else:
-        return render(request,'app/search.html',{'products':prod})
+        return render(request,'app/search.html',{'products':prod, 'totalitems':totalitems})
