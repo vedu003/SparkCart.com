@@ -55,7 +55,10 @@ html {
 }
 
 .searchform{
-    margin-right: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2rem;
 }
 
 .cartitemnum{
@@ -451,6 +454,8 @@ footer p{
 .homewatchdiv{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .homewatchdiv img {
@@ -478,6 +483,31 @@ footer p{
     text-align: justify!important;
 }
 
+.formwidth{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formwidth2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.signup, .login, .password_change, .password_set, .resetform, .password_reset{
+    width: 33%;
+}
+
+.contactform{
+    width: 50%;
+}
+
+.mailcofirmsec, .mailsentsec, .logoutsec, .passresetdonesec{
+    height: 40vh!important;
+}
 
 
 @media (max-width: 768px){
@@ -501,7 +531,8 @@ footer p{
     .homewatchdiv{
         display: flex;
         flex-direction: column;
-        margin-left: 2rem;
+        align-items: center;
+        justify-content: center;
     }
 
     .footlink li{
@@ -566,10 +597,18 @@ footer p{
     }
     .searchform{
         margin-top: 1rem;
+        margin-right: 0;
     }
     .updateaddform{
         margin-top: 0.5rem;
     }
+    .signup, .login, .password_change, .password_set, .resetform, .password_reset{
+        width: 100%;
+    }
+    .contactform{
+        width: 100%;
+    }
+    
 
 }
 
@@ -592,7 +631,9 @@ footer p{
         display: grid;
         grid-template-columns: auto auto;
         grid-row-gap: 2rem;
-        margin-left: 3.3rem;
+        grid-column-gap: 2rem;
+        align-items: center;
+        justify-content: center;
         
     }
     .originaldiv{
@@ -612,11 +653,14 @@ footer p{
         width: 50%!important;
     }
     
-    .formwidth{
-        width: 400px;
-        margin-left: 10rem;
+    .signup, .login, .password_change, .password_set, .resetform, .password_reset{
+        width: 55%;
+    }    
+
+    .contactform{
+        width: 70%;
     }
-    
+
     .loginsec, .signupsec, .contactsec,.passresetsec, .passresetdonesec {
         height: auto;
     }
@@ -632,20 +676,23 @@ footer p{
     }
     .searchform{
         margin-top: 1rem;
+        margin-right: 0;
     }
 }
 
 @media (min-width: 1024px) and (max-width: 1366px)  {
 
     .searchform{
-        margin-right: 2rem;
+        margin-right: 1rem;
+        margin-bottom: 0.5rem;
     }
 
     .homewatchdiv{
         display: grid;
         grid-template-columns: auto auto auto;
         grid-row-gap: 2rem;
-        margin-left: 1.8rem;
+        align-items: center;
+        justify-content: center;
     }
 
     .contact .info{
@@ -653,23 +700,29 @@ footer p{
     }
 
     .sooimg{
-        width: 45%!important;
-        height: 50%!important;
+        width: 25%!important;
+        height: 30%!important;
         margin-top: -1rem;
     }
     .originalpara{
         text-align: inherit;
     }
     .checkoutsec, .ordersec, .profilesec{
-        height: 50vh;
+        height: auto;
     }
 
-    .formwidth{
-        margin-left: 18rem;
+    .signup, .login, .password_change, .password_set, .resetform, .password_reset{
+        width: 45%;
+    }    
+
+    .contactform{
+        width: 60%;
     }
+
     .loginsec, .signupsec, .contactsec, .passresetsec, .passresetdonesec, .passchangednsec, .logoutsec {
         height: auto;
     }
+
     .noorder{
         width: 80%;
     }
@@ -693,6 +746,10 @@ footer p{
 
     .catdiv{
         margin-left: 2.5rem!important;
+    }
+    input[type="search"]{
+        width:100px;
+        margin-left: 1rem;
     }
 
 }

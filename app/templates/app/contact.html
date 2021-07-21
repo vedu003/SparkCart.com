@@ -3,12 +3,10 @@
 {% block title %}Contact{% endblock title %}
 {% block main-content %}
 <section class="contactsec">
-<div class="container my-5">
- <div class="row">
-  
-  <div class="col-sm-6 offset-sm-3 mt-4">
+<div class="container my-5">  
+  <div class="formwidth2 mt-4">
     <h4 class="mb-4   ">Welcome {{request.user.username|capfirst}}</h4>
-   <form action="/contact/" method="POST">
+   <form action="/contact/" method="POST" class="contactform">
     {% csrf_token %}
     <div class="col-12">
       <label for="inputName" class="form-label mt-2">Name</label>
@@ -34,7 +32,6 @@
     </div>
    </form>
   </div>
- </div>
 </div>
 </section>
 {% endblock main-content %}

@@ -4,9 +4,8 @@
 {% block main-content %}
 <section class="signupsec">
 <div class="container">
- <div class="row my-3">
-  <div class="col-sm-4 offset-sm-4 formwidth">
-   
+ 
+  <div class="formwidth">
     <form class="signup shadow p-5 mt-3" id="signup_form" method="post" action="{% url 'account_signup' %}" >
    {% csrf_token %}
    <h3 class="text-center mb-3">Signup</h3>
@@ -50,7 +49,6 @@
        class="text-danger">Login Now</a> </small></div>
    </form>
   </div>
- </div>
 </div>
 </section>
 {% endblock main-content %}
