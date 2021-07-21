@@ -1,0 +1,46 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Signup{% endblock title %}
+{% load i18n %}
+{% block main-content %}
+<section class="signupsec">
+<div class="container">
+    <p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to
+        {{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>
+        
+  <div class="formwidth">
+    <form class="signup shadow p-5 mt-3" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
+   {% csrf_token %}
+   <h3 class="text-center mb-3">Signup</h3>
+
+    <div class="mb-3">
+        <label for="inputEmail4" class="form-label">Email</label>
+        <input id="email" name="email" placeholder="Email" type="email" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <small class="text-danger">{{form.errors.email|striptags}}</small>
+    </div>
+
+
+   <div class="mb-3">
+      <label for="inputPassword1" class="form-label">Username</label>
+      <input id="username" type="text" name="username" placeholder="Username" class="form-control" required>
+   </div>
+   <div class="mb-3">
+      <small class="text-danger">{{form.errors.username|striptags}}</small>
+   </div>
+
+   {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+   {% endif %}
+
+   <div class="text-center">
+     <button type="submit" class="signupbtn mt-3">Submit</button>
+   </div>
+   <br>
+   </form>
+  </div>
+</div>
+</section>
+{% endblock main-content %}
+
