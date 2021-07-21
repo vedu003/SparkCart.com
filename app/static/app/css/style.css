@@ -73,11 +73,6 @@ html {
 
 /* *******login******** */
 
-
-.logoutsec, .mailsentsec, .mailcofirmsec, .passresetdonesec{
-	height: 34vh;
-}
-
 .passchangednsec{
     height: 50vh;
 }
