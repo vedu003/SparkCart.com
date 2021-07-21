@@ -487,6 +487,7 @@ def searchMatch(query,item):
 
 def search(request):
     
+    totalitems=0
     if request.user.is_authenticated:
         totalitems = len(Cart.objects.filter(user=request.user))
     query = request.GET.get('search')
