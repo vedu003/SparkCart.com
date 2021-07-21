@@ -22,16 +22,16 @@
      </div>
      <div class="col-12">
       <label for="inputName" class="form-label">Date of Birth</label>
-      <input type="date" class="form-control" id="inputEmail" name="dob" required>
+      <input type="date" class="form-control" id="datefield" name="dob" max="2001-12-31" required>
     </div>
      <div class="col-12">
        <label for="inputAddress" class="form-label">Contact</label>
        <input type="tel" class="form-control" id="inputAddress" placeholder="Contact" pattern="^\d{10}$" name="contact" required>
      </div>
      <div class="col-12 mt-3">
-       <input type="radio" id="male" name="gender" value="Male">
+       <input type="radio" id="male" name="gender" value="Male" required>
        <label for="male">Male</label><br>
-       <input type="radio" id="female" name="gender" value="Female">
+       <input type="radio" id="female" name="gender" value="Female" required>
        <label for="female">Female</label><br>
      </div>
      
