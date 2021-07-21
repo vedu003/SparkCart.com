@@ -567,6 +567,9 @@ footer p{
     .searchform{
         margin-top: 1rem;
     }
+    .updateaddform{
+        margin-top: 0.5rem;
+    }
 
 }
 
