@@ -1,11 +1,15 @@
 {
-    "builds":[{
-        "src": "ecomm/wsgi.py",
-        "use":"@vercel/python",
-        "config": {"maxLambdaSize": "15mb", "runtime": "python3.12"}
-    }],
-    "routes": [{
-        "src" : "/(.*)",
-        "dest": "ecomm/wsgi.py"
-    }]
+  "builds": [{
+    "src": "ecomm/wsgi.py",
+    "use": "@vercel/python",
+    "config": {
+      "maxLambdaSize": "15mb",
+      "runtime": "python3.12"
+    }
+  }],
+  "routes": [{
+    "src": "/(.*)",
+    "dest": "ecomm/wsgi.py"
+  }],
+  "buildCommand": "pip install --force-reinstall setuptools==58.0.4 && vercel build"
 }
